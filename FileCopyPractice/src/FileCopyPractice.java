@@ -26,14 +26,16 @@ public class FileCopyPractice {
 				fos.write(buf, 0, BUFFER_SIZE);
 				readCount += readfile;
 				
+				if(readfile < BUFFER_SIZE) { // EOF발견 시
+					System.out.println("*");
+					
+					break; // 반복문 탈출
+				}
+				
 				if(readCount >= (srcfile.length() / 10)) { // 10프로 초과 시
 					System.out.print("*"); // 별 출력 후
 					
 					readCount -= (srcfile.length() / 10);
-				}
-				
-				if(readfile < BUFFER_SIZE) { // EOF발견 시
-					break; // 반복문 탈출
 				}
 			}
 			System.out.println();
