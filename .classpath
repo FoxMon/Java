@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="AbstractClassStudy/src"/>
+	<classpathentry kind="src" path="AnswerEnglishVoca/src"/>
+	<classpathentry kind="src" path="ArrayList/src"/>
+	<classpathentry kind="src" path="ArrayListStudy/src"/>
+	<classpathentry kind="src" path="BearAndFishGame/src"/>
+	<classpathentry kind="src" path="BinaryCopy/src"/>
+	<classpathentry kind="src" path="BinaryCopyArray/src"/>
+	<classpathentry kind="src" path="BinaryCopyBuffer/src"/>
+	<classpathentry kind="src" path="ClassProject/src"/>
+	<classpathentry kind="src" path="ConnectionStreamBuffer/src"/>
+	<classpathentry kind="src" path="ConnectStream/src"/>
+	<classpathentry excluding="src/" kind="src" path="FileCopyAndSearch"/>
+	<classpathentry kind="src" path="FileCopyAndSearch/src"/>
+	<classpathentry kind="src" path="FileCopyPractice/src"/>
+	<classpathentry kind="src" path="FileInputStreamEx/src"/>
+	<classpathentry kind="src" path="FileOutputStreamEx/src"/>
+	<classpathentry kind="src" path="FileRead/src"/>
+	<classpathentry kind="src" path="Histogram/src"/>
+	<classpathentry kind="src" path="Java_Programming/src"/>
+	<classpathentry kind="src" path="MonthScheduler/src"/>
+	<classpathentry kind="src" path="PackageAndImport/src"/>
+	<classpathentry kind="src" path="PackageStudy/src"/>
+	<classpathentry kind="src" path="PhoneBook/src"/>
+	<classpathentry kind="src" path="Practice/src"/>
+	<classpathentry kind="src" path="RandomGame/src"/>
+	<classpathentry kind="src" path="RepeatString/src"/>
+	<classpathentry kind="src" path="SeatReserve/src"/>
+	<classpathentry kind="src" path="StackMemory/src"/>
+	<classpathentry kind="src" path="StudentTest/src"/>
+	<classpathentry kind="src" path="Subject2/src"/>
+	<classpathentry kind="src" path="Subject3/src"/>
+	<classpathentry kind="src" path="ThreadStudy/src"/>
+	<classpathentry kind="src" path="VectorStudy/src"/>
+	<classpathentry kind="output" path="AbstractClassStudy/bin"/>
+</classpath>
