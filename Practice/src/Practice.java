@@ -1,67 +1,26 @@
+import  java.util.Scanner;
+
 public class Practice {
+	int cnt  = 0;
 	public static void main(String[] args) {
-		CounterThread ct = new CounterThread();
+		Scanner scan = new Scanner(System.in);
+		int n;
 		
-		 ct.start();
-		 
-		 Thread cr = new Thread(new CounterRunnable());
-		 
-		 cr.start();
-		 
-		// 0 ~ 9까지 카운트
-		for(int i = 0; i < 10; i++) {
-			System.out.println("[" + Thread.currentThread().getName() + "] " + "Count : " + i);
-			
-			if(i == 7) {
-				ct.clearFlag();
-			}
-			
-			try {
-				Thread.sleep(1000);
-			} catch(InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+		n = scan.nextInt();
+		Practice pr = new Practice();
+		
+		pr.hanoi(n, '1', '2', '3');
 	}
 	
-	private static class CounterThread extends Thread {
-		private boolean mflag = true;
-		
-		@Override
-		public void run() {
-			for(int i = 0; i < 10; i++) {
-				if(mflag == false) {
-					return;
-				}
-				
-				System.out.println("[" + getName() + "] " + "Count : " + i);
-			
-				try {
-					Thread.sleep(1000);
-				} catch(InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
+	public void hanoi(int n, char from, char to, char by) {
+		if(n == 1 ) {
+			cnt++;
+			System.out.println(cnt + " " + from + "->" + by);
+		} else {
+			hanoi(n-1, from, by, to);
+			cnt++;
+			System.out.println(cnt + " " + from + "->" + by);
+			hanoi(n-1, to, from, by);
 		}
-		
-		public void clearFlag() {
-			this.mflag = false;
-		}
-	}
-	
-	private static class CounterRunnable implements Runnable {
-		
-		@Override
-		public void run() {
-			for(int i = 0; i < 10; i++) {
-				System.out.println("[" + Thread.currentThread().getName() + "] " + "Count : " + i);
-			
-				try {
-					Thread.sleep(1000);
-				} catch(InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		} 
 	}
 }
