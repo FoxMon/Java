@@ -1,4 +1,4 @@
-package ListQueue;
+package ListQue;
 
 import java.util.NoSuchElementException;
 
@@ -32,7 +32,7 @@ public class ListQue<E> {
 			throw new NoSuchElementException();
 		}
 		
-		E delete = front.getItem();
+		E frontItem = front.getItem();
 		front = front.getNext();
 		size--;
 		
@@ -40,7 +40,7 @@ public class ListQue<E> {
 			rear = null;
 		}
 		
-		return delete;
+		return frontItem;
 	}
 	
 	public static void main(String[] args) {
