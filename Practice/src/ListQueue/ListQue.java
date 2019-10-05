@@ -3,7 +3,8 @@ package ListQueue;
 import java.util.NoSuchElementException;
 
 public class ListQue<E> {
-	private Node<E> front, rear;
+	private Node<E> front;
+	private Node<E> rear;
 	private int size;
 	
 	public ListQue() {
@@ -11,11 +12,11 @@ public class ListQue<E> {
 		size = 0;
 	}
 	
+	public boolean isEmpty() { return ( size == 0); }
 	public int size() { return size; }
-	public boolean isEmpty() { return (size == 0); }
 	
-	public void add(E newItem) {
-		Node newNode = new Node(newItem, null);
+	public void add(E item) {
+		Node newNode = new Node(item, null);
 		
 		if(isEmpty()) {
 			front = newNode;
@@ -32,7 +33,7 @@ public class ListQue<E> {
 			throw new NoSuchElementException();
 		}
 		
-		E delete = front.getItem();
+		E frontItem = front.getItem();
 		front = front.getNext();
 		size--;
 		
@@ -40,10 +41,10 @@ public class ListQue<E> {
 			rear = null;
 		}
 		
-		return delete;
+		return frontItem;
 	}
 	
 	public static void main(String[] args) {
-		ListQue<String> que = new ListQue<String>();
+		ListQue<String> q = new ListQue<String>();
 	}
 }

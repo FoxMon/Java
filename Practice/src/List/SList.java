@@ -3,7 +3,7 @@ package List;
 import java.util.NoSuchElementException;
 
 public class SList<E> {
-	protected Node<E> head;
+	private Node head;
 	private int size;
 	
 	public SList() {
@@ -11,19 +11,9 @@ public class SList<E> {
 		size = 0;
 	}
 	
-	public int size() {
-		return size;
-	}
+	public boolean isEmpty() { return (size == 0); }
 	
-	public boolean isEmpty() {
-		return ( size == 0 );
-	}
-	
-	public int search(E target) {
-		if(isEmpty()) {
-			throw new NoSuchElementException();
-		}
-		
+	public int peek(E target) {
 		Node temp = head;
 		
 		for(int i = 0; i < size; i++) {
@@ -37,13 +27,13 @@ public class SList<E> {
 		return -1;
 	}
 	
-	public void insertFront(E newItem) {
-		head = new Node(newItem, head);
+	public void insertFront(E item) {
+		head = new Node(item, head);
 		size++;
 	}
 	
-	public void insertAfter(E newItem, Node temp) {
-		temp.setNext(new Node(newItem, temp.getNext()));
+	public void insertAfter(E item, Node previous) {
+		previous.setNext(new Node(item, previous.getNext()));
 		size++;
 	}
 	
@@ -56,18 +46,18 @@ public class SList<E> {
 		size--;
 	}
 	
-	public void deleteAfter(Node temp) {
-		if(temp == null) {
+	public void deleteAfter(Node previous) {
+		if(previous == null) {
 			throw new NoSuchElementException();
 		}
 		
-		Node p = temp.getNext();
-		temp.setNext(p.getNext());
-		p.setNext(null);
+		Node temp = previous.getNext();
+		previous.setNext(temp.getNext());
+		temp.setNext(null);
 		size--;
 	}
 	
 	public static void main(String[] args) {
-		SList<String> slist = new SList<String>();
+		SList<String> list = new SList<String>();
 	}
 }

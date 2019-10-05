@@ -11,13 +11,8 @@ public class SlistStack<E> {
 		size = 0;
 	}
 	
-	public boolean isEmpty() {
-		return (size == 0);
-	}
-	
-	public int size() {
-		return size;
-	}
+	public boolean isEmpty() { return (size == 0); }
+	public int size() { return size; }
 	
 	public E peek() {
 		if(isEmpty()) {
@@ -27,8 +22,8 @@ public class SlistStack<E> {
 		return top.getItem();
 	}
 	
-	public void push(E newItem) {
-		Node newNode = new Node(newItem, top);
+	public void push(E item) {
+		Node newNode = new Node(item, top);
 		top = newNode;
 		size++;
 	}
@@ -38,14 +33,14 @@ public class SlistStack<E> {
 			throw new EmptyStackException();
 		}
 		
-		E item = top.getItem();
+		E temp = top.getItem();
 		top = top.getNext();
 		size--;
 		
-		return item;
+		return temp;
 	}
 	
 	public static void main(String[] args) {
-		SlistStack<String> slistStack = new SlistStack<String>();
+		SlistStack<String> stack = new SlistStack<String>();
 	}
 }

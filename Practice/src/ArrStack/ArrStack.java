@@ -3,7 +3,7 @@ package ArrStack;
 import java.util.EmptyStackException;
 
 public class ArrStack<E> {
-	private E[] stack;
+	private E stack[];
 	private int top;
 	
 	public ArrStack() {
@@ -11,13 +11,8 @@ public class ArrStack<E> {
 		top = -1;
 	}
 	
-	public int size() {
-		return (top + 1);
-	}
-	
-	public boolean isEmpty() {
-		return (top == -1);
-	}
+	public int size() { return ( top + 1 ); }
+	public boolean isEmpty() { return ( top == -1 ); }
 	
 	public void resize(int newSize) {
 		Object temp[] = new Object[newSize];
@@ -29,14 +24,6 @@ public class ArrStack<E> {
 		stack = (E[]) temp;
 	}
 	
-	public void push(E newItem) {
-		if(size() == stack.length) {
-			resize(stack.length * 2);
-		}
-		
-		stack[++top] = newItem;
-	}
-	
 	public E peek() {
 		if(isEmpty()) {
 			throw new EmptyStackException();
@@ -45,12 +32,20 @@ public class ArrStack<E> {
 		return stack[top];
 	}
 	
+	public void push(E newItem) {
+		if(size() == stack.length) {
+			resize(stack.length * 2);
+		}
+		
+		stack[++top] = newItem;
+	}
+	
 	public E pop() {
 		if(isEmpty()) {
 			throw new EmptyStackException();
 		}
 		
-		E temp = stack[top]; 
+		E temp = stack[top];
 		stack[top--] = null;
 		
 		if(size() > 0 && size() == stack.length / 4) {
@@ -61,6 +56,6 @@ public class ArrStack<E> {
 	}
 	
 	public static void main(String[] args) {
-		ArrStack<String> arrStack = new ArrStack<String>();
+		ArrStack<String> arr = new ArrStack<String>();
 	}
 }

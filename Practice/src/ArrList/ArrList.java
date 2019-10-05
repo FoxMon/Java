@@ -3,26 +3,24 @@ package ArrList;
 import java.util.NoSuchElementException;
 
 public class ArrList<E> {
-	private E[] list;
 	private int size;
+	private E arrList[];
 	
 	public ArrList() {
-		list = (E[]) new Object[1];
+		arrList = (E[]) new Object[1];
 		size = 0;
 	}
 	
-	public boolean isEmpty() {
-		return (size == 0);
-	}
+	public boolean isEmpty() { return (size == 0); }
 	
 	public void resize(int newSize) {
 		Object temp[] = new Object[newSize];
 		
 		for(int i = 0; i < size; i++) {
-			temp[i] = list[i];
+			temp[i] = arrList[i];
 		}
 		
-		list = (E[]) temp;
+		arrList = (E[])temp;
 	}
 	
 	public E peek(int index) {
@@ -30,28 +28,28 @@ public class ArrList<E> {
 			throw new NoSuchElementException();
 		}
 		
-		return list[index];
-	}
-	
-	public void insertLast(E newItem) {
-		if(size == list.length) {
-			resize(list.length * 2);
-		}
-		
-		list[size++] = newItem;
+		return arrList[index];
 	}
 	
 	public void insert(E newItem, int index) {
-		if(size == list.length) {
-			resize(list.length * 2);
+		if(size == arrList.length) {
+			resize(arrList.length * 2);
 		}
 		
-		for(int i = size -1; i >= index; i--) {
-			list[i+1] = list[i];
+		for(int i = size - 1; i >= index; i--) {
+			arrList[i+1] = arrList[i];
 		}
 		
-		list[index] = newItem;
+		arrList[index] = newItem;
 		size++;
+	}
+	
+	public void insertLast(E newItem) {
+		if(size == arrList.length) {
+			resize(arrList.length * 2);
+		}
+		
+		arrList[size++] = newItem;
 	}
 	
 	public E delete(int index) {
@@ -59,22 +57,22 @@ public class ArrList<E> {
 			throw new NoSuchElementException();
 		}
 		
-		E item = list[index];
+		E temp = arrList[index];
 		
 		for(int i = index; i < size; i++) {
-			list[i] = list[i+1];
+			arrList[i] = arrList[i + 1];
 		}
 		
 		size--;
 		
-		if(size > 0 && size == list.length) {
-			resize(list.length / 2);
+		if(size == arrList.length / 4) {
+			resize(arrList.length / 2);
 		}
 		
-		return item;
+		return temp;
 	}
 	
 	public static void main(String[] args) {
-		ArrList<String> arrList = new ArrList<String>();
+		ArrList<String> arr = new ArrList<String>();
 	}
 }
