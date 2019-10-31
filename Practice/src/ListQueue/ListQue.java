@@ -12,8 +12,8 @@ public class ListQue<E> {
 		size = 0;
 	}
 	
-	public boolean isEmpty() { return ( size == 0); }
 	public int size() { return size; }
+	public boolean isEmpty() { return (size == 0); }
 	
 	public void add(E item) {
 		Node newNode = new Node(item, null);
@@ -33,18 +33,14 @@ public class ListQue<E> {
 			throw new NoSuchElementException();
 		}
 		
-		E frontItem = front.getItem();
+		E temp = front.getItem();
 		front = front.getNext();
 		size--;
 		
-		if(isEmpty()) {
-			rear = null;
-		}
-		
-		return frontItem;
+		return temp;
 	}
 	
 	public static void main(String[] args) {
-		ListQue<String> q = new ListQue<String>();
+		
 	}
 }

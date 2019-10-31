@@ -2,10 +2,10 @@ package Tree;
 
 public class Node<Key extends Comparable<Key>> {
 	private Key item;
-	Node<Key> left;
-	Node<Key> right;
+	private Node<Key> left;
+	private Node<Key> right;
 	
-	public Node(Key item, Node<Key>left, Node<Key> right) {
+	public Node(Key item, Node<Key> left, Node<Key> right) {
 		this.item = item;
 		this.left = left;
 		this.right = right;
@@ -16,5 +16,5 @@ public class Node<Key extends Comparable<Key>> {
 	public Node<Key> getRight() { return right; }
 	public void setKey(Key item) { this.item = item; }
 	public void setLeft(Node<Key> left) { this.left = left; }
-	public void setRight(Node<Key> right) { this.right = right; } 
+	public void setRight(Node<Key> right) { this.right = right; }
 }

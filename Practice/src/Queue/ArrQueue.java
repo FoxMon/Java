@@ -3,38 +3,36 @@ package Queue;
 import java.util.NoSuchElementException;
 
 public class ArrQueue<E> {
-	private E q[];
-	private int front, rear;
-	private int size;
+	private E[] que;
+	private int front, rear, size;
 	
 	public ArrQueue() {
-		q = (E[]) new Object[2];
-		front = rear = 0;
-		size = 0;
+		que = (E[]) new Object[2];
+		front = rear = size = 0;
 	}
 	
-	public boolean isEmpty() { return (size == 0); }
 	public int size() { return size; }
+	public boolean isEmpty() { return (size == 0); }
 	
 	public void resize(int newSize) {
-		Object temp[] = new Object[newSize];
+		Object[] temp = new Object[newSize];
 		
 		for(int i = 1, j = front + 1; i < size + 1; i++, j++) {
-			temp[i] = q[j];
+			temp[i] = que[j % que.length];
 		}
 		
 		front = 0;
 		rear = size;
-		q = (E[]) temp;
+		que = (E[]) temp;
 	}
 	
 	public void add(E item) {
-		if(front == (rear + 1) % q.length) {
-			resize(q.length * 2);
+		if(front == (rear + 1) % que.length) {
+			resize(que.length * 2);
 		}
 		
-		rear = (rear + 1) % q.length;
-		q[rear] = item;
+		rear = (rear + 1) % que.length;
+		que[rear] = item;
 		size++;
 	}
 	
@@ -43,19 +41,15 @@ public class ArrQueue<E> {
 			throw new NoSuchElementException();
 		}
 		
-		front = (front + 1) % q.length;
-		E temp = q[front];
-		q[front] = null;
+		front = (front + 1) % que.length;
+		E temp = que[front];
+		que[front] = null;
 		size--;
 		
-		if(size > 0 && size == q.length / 4) {
-			resize(q.length / 2);
+		if(size > 0 && size == que.length / 4) {
+			resize(que.length / 2);
 		}
 		
 		return temp;
-	}
-	
-	public static void main(String[] args) {
-		ArrQueue<String> arr = new ArrQueue<String>();
 	}
 }

@@ -11,8 +11,8 @@ public class SlistStack<E> {
 		size = 0;
 	}
 	
-	public boolean isEmpty() { return (size == 0); }
 	public int size() { return size; }
+	public boolean isEmpty() { return (size == 0); }
 	
 	public E peek() {
 		if(isEmpty()) {

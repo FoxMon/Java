@@ -3,7 +3,7 @@ package ArrStack;
 import java.util.EmptyStackException;
 
 public class ArrStack<E> {
-	private E stack[];
+	private E[] stack;
 	private int top;
 	
 	public ArrStack() {
@@ -11,17 +11,17 @@ public class ArrStack<E> {
 		top = -1;
 	}
 	
-	public int size() { return ( top + 1 ); }
-	public boolean isEmpty() { return ( top == -1 ); }
+	public int size() { return (top + 1); }
+	public boolean isEmpty() { return (top == -1); }
 	
 	public void resize(int newSize) {
-		Object temp[] = new Object[newSize];
+		Object[] temp = new Object[newSize];
 		
 		for(int i = 0; i < size(); i++) {
 			temp[i] = stack[i];
 		}
 		
-		stack = (E[]) temp;
+		temp = (E[]) stack;
 	}
 	
 	public E peek() {
@@ -32,12 +32,12 @@ public class ArrStack<E> {
 		return stack[top];
 	}
 	
-	public void push(E newItem) {
+	public void push(E item) {
 		if(size() == stack.length) {
 			resize(stack.length * 2);
 		}
 		
-		stack[++top] = newItem;
+		stack[++top] = item;
 	}
 	
 	public E pop() {
@@ -56,6 +56,6 @@ public class ArrStack<E> {
 	}
 	
 	public static void main(String[] args) {
-		ArrStack<String> arr = new ArrStack<String>();
+		ArrStack<String> stack = new ArrStack<String>();
 	}
 }

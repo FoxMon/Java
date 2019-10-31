@@ -5,8 +5,8 @@ public class Node<E> {
 	private E item;
 	
 	public Node(E item, Node<E> next) {
-		this.item = item;
 		this.next = next;
+		this.item = item;
 	}
 	
 	public Node<E> getNext() { return next; }

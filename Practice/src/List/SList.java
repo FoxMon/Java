@@ -11,13 +11,18 @@ public class SList<E> {
 		size = 0;
 	}
 	
-	public boolean isEmpty() { return (size == 0); }
+	public int size() { return size; }
+	public boolean isEmpty() { return ( size == 0 ); }
 	
-	public int peek(E target) {
+	public int search(E target) {
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		
 		Node temp = head;
 		
 		for(int i = 0; i < size; i++) {
-			if(target == temp.getItem()) {
+			if(temp.getItem() == target) {
 				return i;
 			}
 			
@@ -32,8 +37,8 @@ public class SList<E> {
 		size++;
 	}
 	
-	public void insertAfter(E item, Node previous) {
-		previous.setNext(new Node(item, previous.getNext()));
+	public void insertAfter(E item, Node temp) {
+		temp.setNext(new Node(item, temp.getNext()));
 		size++;
 	}
 	
@@ -46,13 +51,13 @@ public class SList<E> {
 		size--;
 	}
 	
-	public void deleteAfter(Node previous) {
-		if(previous == null) {
+	public void deleteAfter(Node p) {
+		if(p == null) {
 			throw new NoSuchElementException();
 		}
 		
-		Node temp = previous.getNext();
-		previous.setNext(temp.getNext());
+		Node temp = p.getNext();
+		p.setNext(temp.getNext());
 		temp.setNext(null);
 		size--;
 	}

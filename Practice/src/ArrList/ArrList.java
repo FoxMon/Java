@@ -3,76 +3,74 @@ package ArrList;
 import java.util.NoSuchElementException;
 
 public class ArrList<E> {
+	private E[] list;
 	private int size;
-	private E arrList[];
 	
 	public ArrList() {
-		arrList = (E[]) new Object[1];
+		list = (E[]) new Object[1];
 		size = 0;
 	}
 	
-	public boolean isEmpty() { return (size == 0); }
-	
 	public void resize(int newSize) {
-		Object temp[] = new Object[newSize];
+		Object[] temp = new Object[newSize];
 		
 		for(int i = 0; i < size; i++) {
-			temp[i] = arrList[i];
+			temp[i] = list[i];
 		}
 		
-		arrList = (E[])temp;
+		list = (E[]) temp;
 	}
 	
 	public E peek(int index) {
-		if(isEmpty()) {
+		if(size == 0) {
 			throw new NoSuchElementException();
 		}
 		
-		return arrList[index];
+		return list[index];
 	}
 	
-	public void insert(E newItem, int index) {
-		if(size == arrList.length) {
-			resize(arrList.length * 2);
+	public void insert(E item, int index) {
+		if(size == list.length) {
+			resize(2 * list.length);
 		}
 		
 		for(int i = size - 1; i >= index; i--) {
-			arrList[i+1] = arrList[i];
+			list[i+1] = list[i];
 		}
 		
-		arrList[index] = newItem;
+		list[index] = item;
 		size++;
 	}
 	
-	public void insertLast(E newItem) {
-		if(size == arrList.length) {
-			resize(arrList.length * 2);
+	public void insertLast(E item) {
+		if(size == list.length) {
+			resize(2 * list.length);
 		}
 		
-		arrList[size++] = newItem;
+		list[size++] = item;
 	}
 	
 	public E delete(int index) {
-		if(isEmpty()) {
+		if(size == 0) {
 			throw new NoSuchElementException();
 		}
 		
-		E temp = arrList[index];
+		E item = list[index];
 		
 		for(int i = index; i < size; i++) {
-			arrList[i] = arrList[i + 1];
+			list[i] = list[i + 1];
 		}
 		
 		size--;
 		
-		if(size == arrList.length / 4) {
-			resize(arrList.length / 2);
+		if(size > 0 && size == list.length / 4) {
+			resize(list.length / 2);
 		}
 		
-		return temp;
+		return item;
 	}
 	
 	public static void main(String[] args) {
-		ArrList<String> arr = new ArrList<String>();
+		ArrList<String> list = new ArrList<String>();
 	}
 }
